@@ -159,7 +159,7 @@ class AutoApprovalExtensionExtension(Extension):
                 [
                     _["id"]
                     async for _ in self.client.products[product_id]
-                    .templates.filter(type="fulfillment")
+                    .templates.filter(type="fulfillment", scope="asset")
                     .values_list("id")
                 ]
             )

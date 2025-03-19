@@ -146,7 +146,8 @@ class AutoApprovalExtensionExtension(Extension):
         elif len(templates) == 1:
             raise ValueError("No fulfillment templates found in the product, please create one")
         else:
-            raise ValueError(f"Got multiple templates, will not try to guess which one to use: {templates}")
+            # raise ValueError(f"Got multiple templates, will not try to guess which one to use: {templates}")
+            return templates[0]
 
     async def process_asset_purchase_request(self, request):
         self.logger.info(f"Obtained request with id {request['id']}")

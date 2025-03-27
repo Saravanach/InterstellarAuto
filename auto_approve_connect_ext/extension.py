@@ -103,7 +103,7 @@ class AutoApprovalExtensionExtension(Extension):
         these parameters have constraints, so the function to pick a random choice has to be 'seeded' with the
         constraints taken from the parameter. This is implemented through partial application
         """
-        time.sleep(5)
+        
         parameter_id = param["id"]
         self.logger.info(f"Filling in parameter {parameter_id}")
         parameter_type = param["type"]
@@ -158,8 +158,6 @@ class AutoApprovalExtensionExtension(Extension):
 
         # Get the list of only the fulfillment params from incoming fulfillment request
         fulfillment_params: List = list(filter(lambda _: _["phase"] == "fulfillment", request["asset"]["params"]))
-
-        time.sleep(20)
         
         for param in fulfillment_params:
             await self._fill_parameter(request_id, param)
